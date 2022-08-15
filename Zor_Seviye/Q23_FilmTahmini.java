@@ -60,6 +60,8 @@ public class Q23_FilmTahmini {
         List<String> filmAdiList = new ArrayList<>();
         String filmAdi = filmler.get(secim - 1);
 
+        List<String> girilenHarf = new ArrayList<>();
+
         for (int i = 0; i < filmler.get(secim - 1).length(); i++) {
             filmAdiList.add("*");
         }
@@ -71,20 +73,19 @@ public class Q23_FilmTahmini {
 
         int dtahmin = 0;
         int ytahmin = 0;
-
+        int tahminsay = 1;
         do {
             boolean varMi = false;
             System.out.println("");
-            System.out.print("Bir harf giriniz : ");
-
+            System.out.print(tahminsay+".Deneme; harf giriniz : ");
             harf = scan.next().toUpperCase().charAt(0);
+            girilenHarf.add(String.valueOf(harf));
 
             for (int i = 0; i < filmUzunluk; i++) {
                 if (harf == filmAdi.charAt(i)) {
                     filmAdiList.set(i, String.valueOf(harf));  // harf var ise; o harf *' ın yerine set ediir.
                     varMi = true;
                 }
-
             }
             if (varMi) {
                 dtahmin++;
@@ -102,8 +103,8 @@ public class Q23_FilmTahmini {
             for (int i = 0; i < filmUzunluk; i++) {
                 System.out.print(filmAdiList.get(i) + " ");
             }
-
-
+            System.out.println();
+            System.out.println("Girdiğin Harfler : "+girilenHarf);
             int say = 0;
             for (int i = 0; i < filmUzunluk; i++) {  // aranan filmin tüm karakterlerine bakılır
                 if (!filmAdiList.get(i).equals("*")) {  // * olmayanlar sayılır
@@ -117,6 +118,7 @@ public class Q23_FilmTahmini {
                 bildi = true;
                 break;     // demekki hiç bir karakter "*" değildir. o zaman tüm karakterler bulunmuş demektir. döngü kırılır
             }
+            tahminsay++;
         } while (filmTahminSayisi != 0);
 
         if (filmTahminSayisi == 0 && (bildi = false)) {
