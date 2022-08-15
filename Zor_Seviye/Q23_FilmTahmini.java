@@ -24,7 +24,7 @@ public class Q23_FilmTahmini {
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
-        List<String> filmler = new ArrayList<>(Arrays.asList("BABA", "JOKER", "DEJAVU", "TITANIC"));
+        List<String> filmler = new ArrayList<>(Arrays.asList("TITANIC", "BABA", "DEJAVU", "JOKER"));
         filmTahmin(filmler);
     }
 
@@ -32,18 +32,29 @@ public class Q23_FilmTahmini {
     public static void filmTahmin(List<String> filmler) {
         char harf;
         int secim;
-
+        boolean bildi = false;
         do {
-            System.out.print("Bulmak İstediginiz Film İçin Bir Numara Girin. (1-" + filmler.size() + ") : ");
+            for (int i = 0; i < filmler.size(); i++) {
+                System.out.print("FİLM " + (i + 1) + " : ");
+                for (int k = 0; k < filmler.get(i).length(); k++) {
+                    System.out.print("* ");
+                    ;
+                }
+                System.out.println("");
+            }
+
+
+            System.out.println("===================================");
+            System.out.print("Bulacağınız Filmi Seçin (1-" + filmler.size() + ") : ");
             secim = scan.nextInt();
         } while (!(secim >= 1 && secim <= filmler.size()));
 
 
         filmUzunluk = filmler.get(secim - 1).length();
-        System.out.println("Seçtiğiniz Film " + filmUzunluk + " karakterdir");
+        System.out.println("Bulacağınız Film " + filmUzunluk + " karakter.");
 
         filmTahminSayisi = filmler.get(secim - 1).length() * 2;
-        System.out.println("Film Tahmini için " + filmTahminSayisi + " hakkınız var");
+        System.out.println("Bulmak İçin " + filmTahminSayisi + " harf hakkın var.");
 
 
         List<String> filmAdiList = new ArrayList<>();
@@ -52,14 +63,15 @@ public class Q23_FilmTahmini {
         for (int i = 0; i < filmler.get(secim - 1).length(); i++) {
             filmAdiList.add("*");
         }
-
-        System.out.print("Aranan Film : ");
+        System.out.println("===================================");
+        System.out.print("Bulunacak Film : ");
         for (int i = 0; i < filmUzunluk; i++) {
             System.out.print(filmAdiList.get(i) + " ");
         }
 
         int dtahmin = 0;
         int ytahmin = 0;
+
         do {
             boolean varMi = false;
             System.out.println("");
@@ -80,13 +92,13 @@ public class Q23_FilmTahmini {
 
             filmTahminSayisi--;
             System.out.println("==============================");
-            System.out.println("Kalan tahmin hakkiniz : " + filmTahminSayisi);
+            System.out.println("Kalan Tahmin Hakkınız : " + filmTahminSayisi);
             System.out.println("Doğru Bulunan Harf Sayısı :" + dtahmin);
             System.out.println("Yanlış Girilen Harf Sayısı :" + ytahmin);
             System.out.println("==============================");
 
 
-            System.out.print("Aranan Film : ");
+            System.out.print("Bulunacak  Film : ");
             for (int i = 0; i < filmUzunluk; i++) {
                 System.out.print(filmAdiList.get(i) + " ");
             }
@@ -95,17 +107,19 @@ public class Q23_FilmTahmini {
             int say = 0;
             for (int i = 0; i < filmUzunluk; i++) {  // aranan filmin tüm karakterlerine bakılır
                 if (!filmAdiList.get(i).equals("*")) {  // * olmayanlar sayılır
-                    say++;   // harf * değil ise say bir artırılır.
+                    say++;   // aranan harf "*" değil ise say bir artırılır.
                 }
             }
 
             if (say == filmUzunluk) {
+                System.out.println();
                 System.out.println("TEBRİKLER BİLDİNİZ");  // eğer say değişkeni film uzunluğa eşit ise
-                break;     // demekki hiç bir karakteri * değildir. o zaman tüm karakterler bulunmuş demekktir. döngü kırılır
+                bildi = true;
+                break;     // demekki hiç bir karakter "*" değildir. o zaman tüm karakterler bulunmuş demektir. döngü kırılır
             }
         } while (filmTahminSayisi != 0);
 
-        if (filmTahminSayisi == 0) {
+        if (filmTahminSayisi == 0 && (bildi = false)) {
             System.out.println("");
             System.out.println("===========================");
             System.out.println("Tüm Haklarınızı Bitirdiniz");
