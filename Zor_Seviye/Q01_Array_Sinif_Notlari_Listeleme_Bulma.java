@@ -7,7 +7,7 @@ public class Q01_Array_Sinif_Notlari_Listeleme_Bulma {
     public static void main(String[] args) {
 
        /*
-       Java dersine giren 10 kişilik bir sınıftaki öğrencilerin isimleri, vize - final notları  ve proje Notları üç ayrı dizide tutulmaktadır.
+       Örnek : Java dersine giren 10 kişilik bir sınıftaki öğrencilerin isimleri, vize - final notları  ve proje Notları üç ayrı dizide tutulmaktadır.
        Not: dizilerdeki index numarası aynı olan elemenlar aynı kişiye ait bilgileri temsil etmektedir.
 
         String isimler[]={"Adem","Emsal","Ayşe","Yasemin","Gülşah","Hüseyin","Birol","Cihan","Hatice","Selim"}
