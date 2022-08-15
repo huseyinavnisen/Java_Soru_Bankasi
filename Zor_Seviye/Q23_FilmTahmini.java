@@ -34,6 +34,9 @@ public class Q23_FilmTahmini {
         int secim;
         boolean bildi = false;
         do {
+            System.out.println("FİLM BULMA OYUNU");
+            System.out.println("=================");
+
             for (int i = 0; i < filmler.size(); i++) {
                 System.out.print("FİLM " + (i + 1) + " : ");
                 for (int k = 0; k < filmler.get(i).length(); k++) {
